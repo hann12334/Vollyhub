@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>VollyHub</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-left">
+    <a href="index.html" class="logo">🏐 VollyHub</a>
+
+    <div class="search-container" id="searchContainer">
+      <button class="search-btn" onclick="toggleSearch()">🔍</button>
+      <input type="text" id="searchInput" placeholder="Search player..." class="search-input">
+    </div>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="compare.html">Compare</a></li>  
+    <li><a href="index.html">Home</a></li>  
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<header class="header">
+  <h1>🏐 VollyHub</h1>
+
+<select id="filterPosition" class="filter">
+    <option value="all">All Position</option>
+    <option value="Setter">Setter</option>
+    <option value="Open Hitter">Open Hitter</option>
+    <option value="Middle Blocker">Middle Blocker</option>
+    <option value="Opposite Hitter">Opposite Hitter</option>
+    <option value="Libero">Libero</option>
+  </select>
+</header>
+
+<div class="section-title">
+  <span>PLAYERS</span>
+</div>
+
+<section class="cards" id="playerCards">
+</section>
+
+
+<footer class="about-footer">
+  © 2026 VollyHub — Built with passion for volleyball & data.
+</footer>
+
+<script src="players.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>VollyHub</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="index.html" class="logo">🏐 VollyHub</a>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="compare.html">Compare</a></li>  
+    <li><a href="index.html">Home</a></li>  
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<a href="index.html" class="back">← Back</a>
+
+<div class="DIV_BG">
+  <div class="player-header">
+    
+    <div class="player-card">
+      <img id="pImage" src="">
+    </div>
+
+    <div class="player-info-game">
+      <h1 class="player-name" id="pName"></h1>
+      <h3 class="player-role" id="pRole"></h3>
+
+      <div class="player-meta">
+        <div class="meta-box">
+          <span class="meta-label">Height</span>
+          <span class="meta-value" id="pHeight"></span>
+        </div>
+        <div class="meta-box">
+          <span class="meta-label">Weight</span>
+          <span class="meta-value" id="pWeight"></span>
+        </div>
+        <div class="meta-box">
+          <span class="meta-label">Age</span>
+          <span class="meta-value" id="pAge"></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- STATS OTOMATIS -->
+<div class="stats-container" id="statsContainer"></div>
+
+
+<!-- PANGGIL DATABASE -->
+<script src="players.js"></script>
+
+<script>
+// Ambil id dari URL
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+// Cari pemain di database
+const player = players.find(p => p.id === id);
+
+// Isi data atas
+document.getElementById("pName").textContent = player.name;
+document.getElementById("pRole").textContent = player.role;
+document.getElementById("pHeight").textContent = player.height + " cm";
+document.getElementById("pWeight").textContent = player.weight + " kg";
+document.getElementById("pAge").textContent = player.age;
+document.getElementById("pImage").src = player.image;
+
+// Generate stats otomatis
+const statsContainer = document.getElementById("statsContainer");
+
+for (let stat in player.stats) {
+  const value = player.stats[stat];
+
+  statsContainer.innerHTML += `
+    <div class="stat">
+      <span>${stat}</span>
+      <div class="bar">
+        <div style="width:${value}%"></div>
+      </div>
+      <b>${value}</b>
+    </div>
+  `;
+}
+</script>
+
+</body>
+</html>

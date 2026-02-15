@@ -1,0 +1,217 @@
+const players = [
+  {
+    id: "bryan",
+    name: "Bryan",
+    position: "Middle Blocker",
+    role: "Middle Blocker",
+    height: 180,
+    weight: 93,
+    age: 17,
+    rating: 80,
+    image: "Bryan.jpeg",
+    stats: {
+      Speed: 80, Acceleration: 80, Reflex: 80, Spiking: 88,
+      Placement: 85, Serve: 90, "Underhand Pass": 85, "Overhead Pass": 79,
+      Positioning: 90, Receive: 85, Blocking: 90, Dig: 82,
+      Jump: 80, Stamina: 84
+    }
+  },
+
+  {
+    id: "toto",
+    name: "Toto",
+    position: "Outside Hitter",
+    role: "Outside Hitter",
+    height: 170,
+    weight: 60,
+    age: 17,
+    rating: 98,
+    image: "Toto.jpeg",
+    stats: {
+      Speed: 99, Acceleration: 99, Reflex: 98, Spiking: 96,
+      Placement: 90, Serve: 90, "Underhand Pass": 99, "Overhead Pass": 89,
+      Positioning: 90, Receive: 93, Blocking: 80, Dig: 95,
+      Jump: 99, Stamina: 99
+    }
+  },
+
+  {
+    id: "rayhan",
+    name: "Rayhan",
+    position: "Open Hitter",
+    role: "Open Hitter",
+    height: 177,
+    weight: 76,
+    age: 18,
+    rating: 95,
+    image: "Rayhan.jpeg",
+    stats: {
+      Speed: 92, Acceleration: 92, Reflex: 88, Spiking: 99,
+      Placement: 90, Serve: 94, "Underhand Pass": 96, "Overhead Pass": 85,
+      Positioning: 91, Receive: 91, Blocking: 80, Dig: 88,
+      Jump: 90, Stamina: 88
+    }
+  },
+
+  {
+    id: "shane",
+    name: "Shane",
+    position: "Open Hitter",
+    role: "Open Hitter",
+    height: 176,
+    weight: 75,
+    age: 18,
+    rating: 85,
+    image: "Shane.jpeg",
+    stats: {
+      Speed: 95, Acceleration: 95, Reflex: 90, Spiking: 88,
+      Placement: 91, Serve: 87, "Underhand Pass": 85, "Overhead Pass": 80,
+      Positioning: 85, Receive: 83, Blocking: 90, Dig: 99,
+      Jump: 85, Stamina: 80
+    }
+  },
+
+  {
+    id: "marcello",
+    name: "Marcello",
+    position: "Opposite Hitter",
+    role: "Opposite Hitter",
+    height: 176,
+    weight: 59,
+    age: 17,
+    rating: 93,
+    image: "Marcello.jpeg",
+    stats: {
+      Speed: 90, Acceleration: 90, Reflex: 87, Spiking: 85,
+      Placement: 85, Serve: 85, "Underhand Pass": 97, "Overhead Pass": 80,
+      Positioning: 88, Receive: 95, Blocking: 80, Dig: 82,
+      Jump: 90, Stamina: 88
+    }
+  },
+
+  {
+    id: "kevas",
+    name: "Kevas",
+    position: "Setter",
+    role: "Setter",
+    height: 173,
+    weight: 68,
+    age: 17,
+    rating: 90,
+    image: "Kevas.jpeg",
+    stats: {
+      Speed: 90, Acceleration: 90, Reflex: 93, Spiking: 82,
+      Placement: 93, Serve: 90, "Underhand Pass": 85, "Overhead Pass": 97,
+      Positioning: 90, Receive: 85, Blocking: 80, Dig: 82,
+      Jump: 81, Stamina: 79
+    }
+  },
+
+  {
+    id: "josua",
+    name: "Josua",
+    position: "Libero",
+    role: "Libero",
+    height: 172,
+    weight: 76,
+    age: 17,
+    rating: 89,
+    image: "Josua.jpeg",
+    stats: {
+      Speed: 90, Acceleration: 90, Reflex: 85, Spiking: 87,
+      Placement: 90, Serve: 96, "Underhand Pass": 82, "Overhead Pass": 88,
+      Positioning: 90, Receive: 91, Blocking: 80, Dig: 81,
+      Jump: 85, Stamina: 80
+    }
+  },
+
+  {
+    id: "steven",
+    name: "Steven",
+    position: "Open Hitter",
+    role: "Open Hitter",
+    height: 180,
+    weight: 75,
+    age: 17,
+    rating: 85,
+    image: "Steven.jpeg",
+    stats: {
+      Speed: 88, Acceleration: 88, Reflex: 83, Spiking: 90,
+      Placement: 90, Serve: 85, "Underhand Pass": 88, "Overhead Pass": 80,
+      Positioning: 90, Receive: 82, Blocking: 80, Dig: 85,
+      Jump: 80, Stamina: 88
+    }
+  },
+
+  {
+    id: "stevan",
+    name: "Stevan",
+    position: "Middle Blocker",
+    role: "Middle Blocker",
+    height: 171,
+    weight: 52,
+    age: 18,
+    rating: 88,
+    image: "Stevan.jpeg",
+    stats: {
+      Speed: 95, Acceleration: 95, Reflex: 85, Spiking: 90,
+      Placement: 85, Serve: 94, "Underhand Pass": 85, "Overhead Pass": 80,
+      Positioning: 90, Receive: 85, Blocking: 80, Dig: 85,
+      Jump: 90, Stamina: 88
+    }
+  },
+
+  {
+    id: "malvin",
+    name: "Malvin",
+    position: "Setter",
+    role: "Setter",
+    height: 170,
+    weight: 50,
+    age: 17,
+    rating: 83,
+    image: "Malvin.jpeg",
+    stats: {
+      Speed: 90, Acceleration: 90, Reflex: 88, Spiking: 80,
+      Placement: 93, Serve: 82, "Underhand Pass": 85, "Overhead Pass": 90,
+      Positioning: 88, Receive: 82, Blocking: 80, Dig: 84,
+      Jump: 85, Stamina: 85
+    }
+  },
+
+  {
+    id: "calvin",
+    name: "Calvin",
+    position: "Opposite Hitter",
+    role: "Opposite Hitter",
+    height: 170,
+    weight: 50,
+    age: 17,
+    rating: 84,
+    image: "Calvin.jpeg",
+    stats: {
+      Speed: 90, Acceleration: 90, Reflex: 90, Spiking: 85,
+      Placement: 82, Serve: 88, "Underhand Pass": 85, "Overhead Pass": 80,
+      Positioning: 90, Receive: 82, Blocking: 80, Dig: 83,
+      Jump: 85, Stamina: 85
+    }
+  },
+
+  {
+    id: "timmy",
+    name: "Timmy",
+    position: "Libero",
+    role: "Libero",
+    height: 172,
+    weight: 58,
+    age: 19,
+    rating: 85,
+    image: "Timmy.jpeg",
+    stats: {
+      Speed: 95, Acceleration: 95, Reflex: 95, Spiking: 75,
+      Placement: 75, Serve: 80, "Underhand Pass": 90, "Overhead Pass": 80,
+      Positioning: 90, Receive: 90, Blocking: 75, Dig: 99,
+      Jump: 80, Stamina: 85
+    }
+  }
+];

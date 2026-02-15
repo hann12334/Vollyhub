@@ -1,0 +1,158 @@
+let radarChart;
+
+function average(arr) {
+  return arr.reduce((a, b) => a + b, 0) / arr.length;
+}
+
+function getRadarStats(stats) {
+  const AGI = average([stats.Speed, stats.Acceleration, stats.Reflex]);
+  const ATT = average([stats.Spiking, stats.Placement, stats.Serve]);
+  const PASS = average([stats["Underhand Pass"], stats["Overhead Pass"]]);
+  const DEF = average([stats.Positioning, stats.Receive, stats.Blocking, stats.Dig]);
+  const PHY = average([stats.Jump, stats.Stamina]);
+
+  return [AGI, ATT, PASS, DEF, PHY];
+}
+
+
+const select1 = document.getElementById("player1");
+const select2 = document.getElementById("player2");
+const leftSide = document.getElementById("leftSide");
+const rightSide = document.getElementById("rightSide");
+
+// isi dropdown
+players.forEach(p => {
+  select1.innerHTML += `<option value="${p.id}">${p.name}</option>`;
+  select2.innerHTML += `<option value="${p.id}">${p.name}</option>`;
+});
+
+select1.addEventListener("change", renderCompare);
+select2.addEventListener("change", renderCompare);
+
+function renderCompare() {
+  const p1 = players.find(p => p.id === select1.value);
+  const p2 = players.find(p => p.id === select2.value);
+
+  if (!p1 || !p2) return;
+
+  leftSide.innerHTML = createPlayerHTML(p1);
+  rightSide.innerHTML = createPlayerHTML(p2);
+
+
+  renderRadar(p1, p2);
+  renderStatCenter(p1, p2); 
+}
+
+function createPlayerHTML(player) {
+  return `
+    <div class="player-card">
+      <img src="${player.image}">
+      <h2 class="compare-name">${player.name}</h2>
+    </div>
+  `;
+}
+
+
+function renderRadar(p1, p2) {
+  const ctx = document.getElementById('radarChart');
+
+  const data1 = getRadarStats(p1.stats);
+  const data2 = getRadarStats(p2.stats);
+
+  if (radarChart) radarChart.destroy();
+
+  radarChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: ['AGI', 'ATT', 'PASS', 'DEF', 'PHY'],
+      datasets: [
+        {
+          label: p1.name,
+          data: data1,
+          borderColor: '#00c3ff',
+          backgroundColor: 'rgba(0,195,255,0.2)',
+          borderWidth: 3
+        },
+        {
+          label: p2.name,
+          data: data2,
+          borderColor: '#ff4d4d',
+          backgroundColor: 'rgba(255,77,77,0.2)',
+          borderWidth: 3
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+  maintainAspectRatio: false,
+      scales: {
+        r: {
+          min: 0,
+          max: 100,
+          ticks: { display: false },
+          grid: { color: '#444' },
+          angleLines: { color: '#444' },
+          pointLabels: {
+            color: 'white',
+            font: { size: 14 }
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          labels: { color: 'white' }
+        }
+      }
+    }
+  });
+}
+function renderStatCenter(player1, player2){
+
+  const stats = [
+    "Spiking",
+    "Placement",
+    "Serve",
+    "Underhand Pass",
+    "Overhead Pass",
+    "Positioning",
+    "Receive",
+    "Blocking",
+    "Dig",
+    "Speed",
+    "Acceleration",
+    "Reflex",
+    "Jump",
+    "Stamina"
+  ];
+
+  const container = document.getElementById("statList");
+  container.innerHTML = "";
+
+  stats.forEach(stat => {
+
+    const val1 = player1.stats[stat];
+    const val2 = player2.stats[stat];
+
+    const row = document.createElement("div");
+    row.className = "stat-row";
+
+    row.innerHTML = `
+      <div class="stat-left ${val1 > val2 ? 'better' : val1 < val2 ? 'worse' : ''}">
+        ${val1}
+      </div>
+
+      <div class="stat-name">${stat}</div>
+
+      <div class="stat-right ${val2 > val1 ? 'better' : val2 < val1 ? 'worse' : ''}">
+        ${val2}
+      </div>
+    `;
+
+    container.appendChild(row);
+  });
+}
+
+
+renderCompare();
+
+

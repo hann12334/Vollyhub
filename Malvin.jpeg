@@ -1,0 +1,58 @@
+const container = document.getElementById("playerCards");
+const searchInput = document.getElementById("searchInput");
+const filterPosition = document.getElementById("filterPosition");
+
+// 1️⃣ BUAT CARD DULU
+players.forEach(player => {
+  container.innerHTML += `
+    <a href="player.html?id=${player.id}" class="card-link">
+      <div class="card" data-name="${player.name}" data-position="${player.position}">
+        <img src="${player.image}">
+        <div class="rating">${player.rating}</div>
+        <h3>${player.name}</h3>
+        <p>${player.position}</p>
+      </div>
+    </a>
+  `;
+});
+
+// 2️⃣ BARU SIAPKAN FILTER
+function filterPlayers() {
+  const searchValue = searchInput.value.toLowerCase();
+  const positionValue = filterPosition.value;
+
+  // ambil cards TERBARU
+  const cards = document.querySelectorAll(".card-link");
+
+  cards.forEach(cardLink => {
+    const card = cardLink.querySelector(".card");
+    const name = card.dataset.name.toLowerCase();
+    const position = card.dataset.position;
+
+    const matchName = name.includes(searchValue);
+    const matchPosition =
+      positionValue === "all" || position === positionValue;
+
+    cardLink.style.display = (matchName && matchPosition) ? "block" : "none";
+  });
+}
+
+searchInput.addEventListener("input", filterPlayers);
+filterPosition.addEventListener("change", filterPlayers);
+
+// SEARCH UI
+function toggleSearch() {
+  const container = document.getElementById("searchContainer");
+  container.classList.toggle("active");
+
+  if (container.classList.contains("active")) {
+    searchInput.focus();
+  }
+}
+
+document.addEventListener("click", function(e) {
+  const container = document.getElementById("searchContainer");
+  if (!container.contains(e.target)) {
+    container.classList.remove("active");
+  }
+});

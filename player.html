@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>VollyHub</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="index.html" class="logo">🏐 VollyHub</a>
+
+  <ul class="nav-links">
+    <li><a href="compare.html">Compare</a></li>  
+    <li><a href="index.html">Home</a></li>  
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<h1 class="page-title">Compare Your Players</h1>
+
+
+<div class="compare-select">
+  <select id="player1"></select>
+  <select id="player2"></select>
+</div>
+
+<div class="compare-wrapper">
+
+  <div class="player-side" id="leftSide"></div>
+
+  <div class="stat-center">
+
+    <!-- RADAR -->
+    <div class="radar-center">
+      <canvas id="radarChart"></canvas>
+    </div>
+
+    <!-- STAT LIST -->
+    <div id="statList"></div>
+
+  </div>
+
+  <div class="player-side" id="rightSide"></div>
+
+</div>
+
+
+<footer class="about-footer">
+  © 2026 VollyHub — Built with passion for volleyball & data.
+</footer>
+
+<script src="players.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="compare.js"></script>
+
+</body>
+</html>
